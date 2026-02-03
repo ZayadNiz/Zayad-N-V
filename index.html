@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Security Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 25px;
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    .status {
+      text-align: left;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+    .status p {
+      margin: 6px 0;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .status p.done {
+      opacity: 1;
+    }
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      display: none;
+    }
+    .footer {
+      font-size: 12px;
+      color: #888;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Security Check</h2>
+  <p>We need to verify your identity</p>
+
+  <div class="status">
+    <p id="s1">✔ Initializing system...</p>
+    <p id="s2">✔ Scanning browser...</p>
+    <p id="s3">✔ Verifying connection...</p>
+    <p id="s4">✔ Check completed</p>
+  </div>
+
+  <button id="continueBtn" onclick="goNext()">Continue</button>
+
+  <div class="footer">Protected by Secure System</div>
+</div>
+
+<script>
+  const steps = ["s1","s2","s3","s4"];
+  let i = 0;
+
+  const interval = setInterval(() => {
+    document.getElementById(steps[i]).classList.add("done");
+    i++;
+    if (i === steps.length) {
+      clearInterval(interval);
+      document.getElementById("continueBtn").style.display = "block";
+    }
+  }, 800);
+
+  function goNext() {
+    window.location.href = "https://your-link-here.com";
+  }
+</script>
+
+</body>
+</html>
